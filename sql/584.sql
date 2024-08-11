@@ -18,3 +18,8 @@ def find_customer_referee(customer: pd.DataFrame) -> pd.DataFrame:
         (customer["referee_id"] != 2)
     ][["name"]]
     return res
+
+    -- method 3
+    customer["referee_id"] = customer["referee_id"].fillna(0)
+    res = customer.query("referee_id != 2")
+    return res[["name"]]
